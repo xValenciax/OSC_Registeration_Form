@@ -1,0 +1,24 @@
+-------Website------------
+
+background-color = #04161A
+main-font-color = 
+card Header color and name background color = #ED7806
+card background color = #E7B88A
+card-font = black
+card-name-font = white
+Form-color-font = white
+
+-------Website------------
+
+-------Mobiles------------
+
+welcome word color = #00C9FF
+OSC Unversity color = #ED7806
+Recruitment color = #74CE4E
+
+Next Button back color = #ED7806
+questions area back color #203B45
+
+card Header color = #ED7806
+
+-------Mobiles------------
