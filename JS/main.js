@@ -206,7 +206,7 @@ submitBtn.addEventListener("click", (e) => {
     card.style.setProperty("transform", "translateX(300%)");
     dateForm.style.setProperty("transform", "translateX(-300%)");
     setTimeout(() => {
-      window.location = "../success.html";
+      window.location = "../public/success.html";
     }, 2500);
   }
 });
