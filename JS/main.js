@@ -16,16 +16,19 @@ setTimeout(() => {
 
 if (swipe !== null) {
   swipe.addEventListener("click", () => {
-    register__page.classList.remove("none");
     landing_page.style.setProperty("transform", "translateY(-100%)");
-    register__page.style.display = "block";
     setTimeout(() => {
       landing_page_stars.classList.remove(".hidden");
       landing_page_stars.classList.add("visible");
-    }, 800);
+    }, 2500);
     setTimeout(() => {
+      register__page.classList.remove(".hidden");
+      register__page.classList.add("visible");
       landing_page.style.setProperty("display", "none");
     }, 1500);
+    setTimeout(() => {
+      register__page.classList.remove("none");
+    }, 1100);
   });
 }
 
@@ -185,15 +188,17 @@ NextBtn.addEventListener("click", (e) => {
     setTimeout(() => {
       infoForm.style.display = "none";
       NextBtn.style.display = "none";
+    }, 2000);
+    setTimeout(() => {
+      submitBtn.classList.remove("none");
+      dateForm.style.display = "flex";
     }, 1000);
-    dateForm.style.display = "flex";
-    submitBtn.classList.remove("none");
     setTimeout(() => {
       dateForm.classList.remove("hidden");
       submitBtn.classList.remove("hidden");
       dateForm.classList.add("visible");
       submitBtn.classList.add("visible");
-    }, 1000);
+    }, 1800);
   }
 });
 
@@ -207,7 +212,7 @@ submitBtn.addEventListener("click", (e) => {
     card.style.setProperty("transform", "translateX(300%)");
     dateForm.style.setProperty("transform", "translateX(-300%)");
     setTimeout(() => {
-      window.location = "./../public/success.html";
+      window.location = "";
     }, 1500);
   }
 });

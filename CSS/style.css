@@ -10,6 +10,7 @@ html {
 }
 
 body {
+    background: #04161A;
     min-height: 100vh;
     width: 100%;
     color: white;
@@ -37,7 +38,6 @@ img {
 }
 
 .register__page {
-    background: #04161A;
     min-height: 100vh;
 }
 
