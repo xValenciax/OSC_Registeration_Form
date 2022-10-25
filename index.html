@@ -8,44 +8,214 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="CSS/landing.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OSC'23 Registeration Form</title>
   </head>
   <body>
-    <div class="md__stars"></div>
-    <header>
-      <div class="img OSC__logo">
-        <img src="Assets/OSC_Logo.png" alt="" />
-      </div>
-      <div class="left">
-        <div class="img FCIS__logo">
-          <img src="Assets/FCIS_Logo.png" alt="" />
+    <!-- landing page -->
+    <div class="landing__page">
+      <div class="md__stars"></div>
+      <header class="landing__header">
+        <div class="img">
+          <img src="Assets/OSC_Logo.png" alt="" />
         </div>
-        <div class="img FCIS__stickman">
-          <img src="Assets/FCIS_StickyMan.png" alt="" />
+        <div class="left">
+          <div class="img">
+            <img src="Assets/FCIS_Logo.png" alt="" />
+          </div>
+          <div class="img">
+            <img src="Assets/FCIS_StickyMan.png" alt="" />
+          </div>
+        </div>
+      </header>
+      <div class="welcome__text">
+        <h3>welcome to</h3>
+        <h2>OSC<br />university</h2>
+        <h1>Recruitment'23</h1>
+      </div>
+      <div class="bottom__part">
+        <div class="swipe__up hidden" style="display: none">
+          <img
+            src="Assets/Mobile/Component 4DownArrow.png"
+            alt="Swipe Page Up to Continue"
+          />
+        </div>
+        <div class="character">
+          <img
+            src="Assets/Mobile/Group 21SpaceMan.png"
+            alt="SpaceMan Looking Up"
+          />
         </div>
       </div>
-    </header>
-    <div class="welcome__text">
-      <h3>welcome to</h3>
-      <h2>OSC<br />university</h2>
-      <h1>Recruitment'23</h1>
     </div>
-    <div class="bottom__part">
-      <div class="swipe__up">
-        <img
-          src="Assets/Mobile/Component 4DownArrow.png"
-          alt="Swipe Page Up to Continue"
-        />
-      </div>
-      <div class="character">
-        <img
-          src="Assets/Mobile/Group 21SpaceMan.png"
-          alt="SpaceMan Looking Up"
-        />
-      </div>
+    <!-- landing page -->
+
+    <!-- Main Page -->
+    <div class="register__page" style="display: none">
+      <div class="md__stars hidden"></div>
+      <header>
+        <div class="OSC__logo">
+          <img src="./Assets/OSC_Logo.png" alt="OSC Sun Logo" />
+        </div>
+        <div class="LHS">
+          <div class="FCIS__Logo">
+            <img src="./Assets/FCIS_Logo.png" alt="" />
+          </div>
+          <div class="FCIS_Stickyman">
+            <img src="./Assets/FCIS_StickyMan.png" alt="" />
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="container">
+          <div class="card">
+            <div class="Title__Text">
+              <h1>OSC Recruitment'23</h1>
+            </div>
+            <div class="interview__details">
+              <p class="committee">
+                <span class="com__name">Web</span>
+                <br />
+                COMMITTEE
+              </p>
+              <p class="interview__time">
+                Interview time
+                <br />
+                <span class="Time"></span>
+              </p>
+              <p class="interview__date">
+                Interview Date
+                <br />
+                <span class="date"></span>
+              </p>
+              <p class="interviewee__ID">
+                ID
+                <br />
+                <span class="ID"></span>
+              </p>
+            </div>
+            <div class="interviewee__details">
+              <div class="astronaut">
+                <div class="backG">
+                  <img src="Assets/SpaceMan-Rect.png" alt="" />
+                  <img src="./Assets/SpaceMan.png" alt="" class="char" />
+                </div>
+              </div>
+              <div class="info">
+                <div class="main__title__backg">
+                  <h2>
+                    <span class="first">Mahmoud</span>
+                    <span class="last">Selim</span>
+                  </h2>
+                </div>
+                <div class="user__information">
+                  <p>Gender: <span class="gender">Male</span></p>
+                  <p>Program: <span class="Program">Credit</span></p>
+                  <p>
+                    <span class="year">Third Year</span> /
+                    <span class="yearName">Junior</span>
+                  </p>
+                  <p class="email">mamo31st@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form action="#" method="post" id="info" autocomplete="off">
+            <h2>Enter Your Information</h2>
+            <input
+              type="text"
+              name="Stud_first__name"
+              id="first__name"
+              placeholder="First Name"
+              maxlength="15"
+              minlength="2"
+              required
+              spellcheck="false"
+            />
+            <input
+              type="text"
+              name="Stud_last__name"
+              id="last__name"
+              placeholder="Last Name"
+              maxlength="15"
+              minlength="2"
+              required
+              spellcheck="false"
+            />
+            <input
+              type="text"
+              name="Stud_ID"
+              id="id"
+              placeholder="ID"
+              minlength="11"
+              maxlength="11"
+              required
+              spellcheck="false"
+            />
+            <input
+              type="text"
+              name="Stud_Email"
+              id="email"
+              placeholder="Email"
+              minlength="3"
+              required
+              spellcheck="false"
+            />
+            <select name="Stud__level" id="level">
+              <option value="" selected disabled hidden>Level</option>
+              <option value="First Year">1st Year</option>
+              <option value="Second Year">2nd Year</option>
+              <option value="Third Year">3rd Year</option>
+              <option value="Fourth Year">4th Year</option>
+            </select>
+            <select name="Stud__gender" id="gender">
+              <option value="" selected disabled hidden>Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <select name="Stud__program" id="program">
+              <option value="" selected disabled hidden>Program</option>
+              <option value="Mainstream">General</option>
+              <option value="BioInformatics">Bio</option>
+              <option value="Cyber security">Cyber</option>
+              <option value="Software Engineering">SE</option>
+              <option value="Multimedia">Multimedia</option>
+            </select>
+            <select name="Wanted__committee" id="committee">
+              <option value="" selected disabled hidden>Committee</option>
+              <option value="Web">Web</option>
+              <option value="Game">Game</option>
+              <option value="Linux">Linux</option>
+              <option value="Flutter">Flutter</option>
+              <option value="UX&Design">UX&Design</option>
+              <option value="Science&Tech">Science&Tech</option>
+              <option value="Blender">Blender</option>
+              <option value="CCC">CCC</option>
+              <option value="HR">HR</option>
+              <option value="PR">PR</option>
+            </select>
+          </form>
+          <button class="btn disabled mobile" id="next">Next</button>
+          <form
+            action="#"
+            method="post"
+            id="inter_date"
+            autocomplete="off"
+            style="display: none"
+            class="hidden"
+          >
+            <h2>Pick Your Interview Date</h2>
+            <input type="date" name="date" id="date" required />
+            <input type="time" name="time" id="time" required />
+            <button class="btn disabled none" id="sub">Submit</button>
+          </form>
+        </div>
+      </main>
     </div>
+    <!-- Main Page -->
+    <script src="JS/main.js"></script>
   </body>
 </html>

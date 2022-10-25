@@ -1,0 +1,51 @@
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.md__stars {
+    background: url('../Assets/ML_background.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.success {
+    background: #04161A;
+    height: 100vh;
+}
+
+.success__header {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.success__header .left {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
