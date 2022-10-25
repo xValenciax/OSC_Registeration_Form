@@ -202,12 +202,13 @@ const main = document.querySelector("main");
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  document.body.style.overflowX = "hidden";
   if (!e.target.classList.contains("disabled")) {
     card.style.setProperty("transform", "translateX(300%)");
     dateForm.style.setProperty("transform", "translateX(-300%)");
     setTimeout(() => {
-      window.location = "../public/success.html";
-    }, 2500);
+      window.location = "./../public/success.html";
+    }, 1500);
   }
 });
 /* switch between forms */
