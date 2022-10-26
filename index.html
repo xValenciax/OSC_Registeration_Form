@@ -114,111 +114,105 @@
               <div class="info">
                 <div class="main__title__backg">
                   <h2>
-                    <span class="first">Mahmoud</span>
-                    <span class="last">Selim</span>
+                    <span class="first"></span>
+                    <span class="last"></span>
                   </h2>
                 </div>
                 <div class="user__information">
-                  <p>Gender: <span class="gender">Male</span></p>
-                  <p>Program: <span class="Program">Credit</span></p>
+                  <p>Gender: <span class="gender"></span></p>
+                  <p>Program: <span class="Program"></span></p>
                   <p>
-                    <span class="year">Third Year</span> /
-                    <span class="yearName">Junior</span>
+                    <span class="year">Year</span> /
+                    <span class="yearName"></span>
                   </p>
-                  <p class="email">mamo31st@gmail.com</p>
+                  <p class="email"></p>
                 </div>
               </div>
             </div>
           </div>
           <form action="#" method="post" id="info" autocomplete="off">
-            <h2>Enter Your Information</h2>
-            <input
-              type="text"
-              name="Stud_first__name"
-              id="first__name"
-              placeholder="First Name"
-              maxlength="15"
-              minlength="2"
-              required
-              spellcheck="false"
-            />
-            <input
-              type="text"
-              name="Stud_last__name"
-              id="last__name"
-              placeholder="Last Name"
-              maxlength="15"
-              minlength="2"
-              required
-              spellcheck="false"
-            />
-            <input
-              type="text"
-              name="Stud_ID"
-              id="id"
-              placeholder="ID"
-              minlength="11"
-              maxlength="11"
-              required
-              spellcheck="false"
-            />
-            <input
-              type="text"
-              name="Stud_Email"
-              id="email"
-              placeholder="Email"
-              minlength="3"
-              required
-              spellcheck="false"
-            />
-            <select name="Stud__level" id="level">
-              <option value="" selected disabled hidden>Level</option>
-              <option value="First Year">1st Year</option>
-              <option value="Second Year">2nd Year</option>
-              <option value="Third Year">3rd Year</option>
-              <option value="Fourth Year">4th Year</option>
-            </select>
-            <select name="Stud__gender" id="gender">
-              <option value="" selected disabled hidden>Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-            <select name="Stud__program" id="program">
-              <option value="" selected disabled hidden>Program</option>
-              <option value="Mainstream">General</option>
-              <option value="BioInformatics">Bio</option>
-              <option value="Cyber security">Cyber</option>
-              <option value="Software Engineering">SE</option>
-              <option value="Multimedia">Multimedia</option>
-            </select>
-            <select name="Wanted__committee" id="committee">
-              <option value="" selected disabled hidden>Committee</option>
-              <option value="Web">Web</option>
-              <option value="Game">Game</option>
-              <option value="Linux">Linux</option>
-              <option value="Flutter">Flutter</option>
-              <option value="UX&Design">UX&Design</option>
-              <option value="Science&Tech">Science&Tech</option>
-              <option value="Blender">Blender</option>
-              <option value="CCC">CCC</option>
-              <option value="HR">HR</option>
-              <option value="PR">PR</option>
-            </select>
+            <div class="info">
+              <h2>Enter Your Information</h2>
+              <input
+                type="text"
+                name="Stud_first__name"
+                id="first__name"
+                placeholder="First Name"
+                maxlength="15"
+                minlength="2"
+                required
+                spellcheck="false"
+              />
+              <input
+                type="text"
+                name="Stud_last__name"
+                id="last__name"
+                placeholder="Last Name"
+                maxlength="15"
+                minlength="2"
+                required
+                spellcheck="false"
+              />
+              <input
+                type="text"
+                name="Stud_ID"
+                id="id"
+                placeholder="ID"
+                minlength="11"
+                maxlength="11"
+                required
+                spellcheck="false"
+              />
+              <input
+                type="text"
+                name="Stud_Email"
+                id="email"
+                placeholder="Email"
+                minlength="3"
+                required
+                spellcheck="false"
+              />
+              <select name="Stud__level" id="level">
+                <option value="" selected disabled hidden>Level</option>
+                <option value="First Year">1st Year</option>
+                <option value="Second Year">2nd Year</option>
+                <option value="Third Year">3rd Year</option>
+                <option value="Fourth Year">4th Year</option>
+              </select>
+              <select name="Stud__gender" id="gender">
+                <option value="" selected disabled hidden>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <select name="Stud__program" id="program">
+                <option value="" selected disabled hidden>Program</option>
+                <option value="Mainstream">General</option>
+                <option value="BioInformatics">Bio</option>
+                <option value="Cyber security">Cyber</option>
+                <option value="Software Engineering">SE</option>
+                <option value="Multimedia">Multimedia</option>
+              </select>
+              <select name="Wanted__committee" id="committee">
+                <option value="" selected disabled hidden>Committee</option>
+                <option value="Web">Web</option>
+                <option value="Game">Game</option>
+                <option value="Linux">Linux</option>
+                <option value="Flutter">Flutter</option>
+                <option value="UX&Design">UX&Design</option>
+                <option value="Science&Tech">Science&Tech</option>
+                <option value="Blender">Blender</option>
+                <option value="CCC">CCC</option>
+                <option value="HR">HR</option>
+                <option value="PR">PR</option>
+              </select>
+            </div>
+            <div class="date hidden" style="display: none">
+              <h2>Pick Your Interview Date</h2>
+              <input type="date" name="date" id="date" required />
+              <input type="time" name="time" id="time" required />
+            </div>
           </form>
           <button class="btn disabled mobile" id="next">Next</button>
-          <form
-            action="#"
-            method="post"
-            id="inter_date"
-            autocomplete="off"
-            style="display: none"
-            class="hidden"
-          >
-            <h2>Pick Your Interview Date</h2>
-            <input type="date" name="date" id="date" required />
-            <input type="time" name="time" id="time" required />
-            <button class="btn disabled none" id="sub">Submit</button>
-          </form>
         </div>
       </main>
     </div>

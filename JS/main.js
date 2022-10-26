@@ -25,7 +25,7 @@ if (swipe !== null) {
       register__page.classList.remove(".hidden");
       register__page.classList.add("visible");
       landing_page.style.setProperty("display", "none");
-    }, 1500);
+    }, 1300);
     setTimeout(() => {
       register__page.classList.remove("none");
     }, 1100);
@@ -162,7 +162,8 @@ if (validDate != 2)
   setInterval(() => {
     if (time.innerHTML !== "") validDate++;
     if (date.innerHTML !== "") validDate++;
-    if (validDate === 2) submitBtn.classList.remove("disabled");
+    if (validDate === 2 && NextBtn.innerHTML === "Submit")
+      NextBtn.classList.remove("disabled");
   }, 1000);
 
 // this must first check the database for available times
@@ -177,43 +178,40 @@ dateTimeInps.forEach((ele) => {
 
 /* switch between forms */
 const notMobile = window.matchMedia("(min-width: 991px)");
-const submitBtn = document.querySelector("#sub");
-const infoForm = document.querySelector("form#info");
-const dateForm = document.querySelector("form#inter_date");
+const infoForm = document.querySelector("form .info");
+const dateForm = document.querySelector("form .date");
 
 NextBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (!NextBtn.classList.contains("disabled")) {
-    infoForm.style.setProperty("transform", "translateX(-300%)");
-    setTimeout(() => {
-      infoForm.style.display = "none";
-      NextBtn.style.display = "none";
-    }, 2000);
-    setTimeout(() => {
-      submitBtn.classList.remove("none");
-      dateForm.style.display = "flex";
-    }, 1000);
-    setTimeout(() => {
-      dateForm.classList.remove("hidden");
-      submitBtn.classList.remove("hidden");
-      dateForm.classList.add("visible");
-      submitBtn.classList.add("visible");
-    }, 1800);
-  }
-});
-
-const card = document.querySelector(".card");
-const main = document.querySelector("main");
-
-submitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  document.body.style.overflowX = "hidden";
-  if (!e.target.classList.contains("disabled")) {
-    card.style.setProperty("transform", "translateX(300%)");
-    dateForm.style.setProperty("transform", "translateX(-300%)");
-    setTimeout(() => {
-      window.location = "";
-    }, 1500);
+  if (e.target.innerHTML === "Next") {
+    if (!NextBtn.classList.contains("disabled")) {
+      infoForm.style.setProperty("transform", "translateX(-300%)");
+      setTimeout(() => {
+        infoForm.style.display = "none";
+        NextBtn.style.opacity = "0";
+        setTimeout(() => {
+          NextBtn.innerHTML = "Submit";
+          NextBtn.classList.add("disabled");
+          NextBtn.style.opacity = "100%";
+        }, 1000);
+      }, 1000);
+      setTimeout(() => {
+        dateForm.style.display = "flex";
+      }, 1000);
+      setTimeout(() => {
+        dateForm.classList.remove("hidden");
+        dateForm.classList.add("visible");
+      }, 1800);
+    }
+  } else if (e.target.innerHTML === "Submit") {
+    document.body.style.overflowX = "hidden";
+    if (!e.target.classList.contains("disabled")) {
+      card.style.setProperty("transform", "translateX(300%)");
+      dateForm.style.setProperty("transform", "translateX(-300%)");
+      setTimeout(() => {
+        window.location = "public/success.html";
+      }, 1500);
+    }
   }
 });
 /* switch between forms */
