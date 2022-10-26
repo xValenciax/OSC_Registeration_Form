@@ -257,8 +257,10 @@ form .date {
 }
 
 @media (min-width: 991px) {
-    form {
-        gap: 50px;
+
+    form .info,
+    form .date {
+        gap: 40px;
     }
 }
 
