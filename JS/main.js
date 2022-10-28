@@ -63,6 +63,7 @@ const date = document.querySelector(".date");
 
 const CheckName = (username) => {
   for (const char of username) {
+    if (char === " ") continue;
     if (!isNaN(char)) return false;
   }
   return username.length <= 15 && username.length >= 2;
