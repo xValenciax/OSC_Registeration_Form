@@ -24,14 +24,12 @@
         <div class="img">
           <img src="Assets/OSC_Logo.png" alt="" />
         </div>
-        <div class="left">
           <div class="img">
             <img src="Assets/FCIS_Logo.png" alt="" />
           </div>
           <div class="img">
             <img src="Assets/FCIS_StickyMan.png" alt="" />
           </div>
-        </div>
       </header>
       <div class="welcome__text">
         <h3>welcome to</h3>
@@ -62,14 +60,12 @@
         <div class="OSC__logo">
           <img src="./Assets/OSC_Logo.png" alt="OSC Sun Logo" />
         </div>
-        <div class="LHS">
           <div class="FCIS__Logo">
             <img src="./Assets/FCIS_Logo.png" alt="" />
           </div>
           <div class="FCIS_Stickyman">
             <img src="./Assets/FCIS_StickyMan.png" alt="" />
           </div>
-        </div>
       </header>
       <main>
         <div class="container">
@@ -79,7 +75,7 @@
             </div>
             <div class="interview__details">
               <p class="committee">
-                <span class="com__name">Web</span>
+                <span class="com__name"></span>
                 <br />
                 COMMITTEE
               </p>
@@ -120,11 +116,14 @@
                 </div>
                 <div class="user__information">
                   <p>Gender: <span class="gender"></span></p>
+                  <p>University: <span class="univ"></span></p>
+                  <p>Faculty: <span class="faculty"></span></p>
                   <p>Program: <span class="Program"></span></p>
                   <p>
                     <span class="year">Year</span> /
                     <span class="yearName"></span>
                   </p>
+                  <p>Phone No. <span class="phone"></span></p>
                   <p class="email"></p>
                 </div>
               </div>
@@ -186,9 +185,10 @@
               </select>
               <select name="Stud__program" id="program">
                 <option value="" selected disabled hidden>Program</option>
-                <option value="Mainstream">General</option>
+                <option value="Mainstream">Mainstream</option>
                 <option value="BioInformatics">Bio</option>
                 <option value="Cyber security">Cyber</option>
+                <option value="Artificial Intelligence">AI</option>
                 <option value="Software Engineering">SE</option>
                 <option value="Multimedia">Multimedia</option>
               </select>
@@ -206,13 +206,70 @@
                 <option value="PR">PR</option>
               </select>
             </div>
+            <div class="more__info hidden" style="display: none">
+              <h2>More Needed Information</h2>
+              <input
+                type="tel"
+                name="phone_number"
+                id="phone__number"
+                placeholder="Mobile Number"
+                pattern="^01[0-2,5]{1}[0-9]{8}$"
+                required
+              />
+              <select name="university" id="university">
+                <option value="" selected disabled hidden>University</option>
+                <option value="Ain Shams University">ASU</option>
+                <option value="other">other</option>
+              </select>
+              <select name="Faculty" id="Faculty">
+                <option value="" selected disabled hidden>Faculty</option>
+                <option value="FCIS">Computer And Information Sciences</option>
+                <option value="other">other</option>
+              </select>
+              <input
+                class="hidden"
+                style="display: none"
+                type="text"
+                name="otherUniv"
+                id="otheruniv"
+                placeholder="Name Of Your University"
+              />
+              </select>
+              <input
+                class="hidden"
+                style="display: none"
+                type="text"
+                name="otherFact"
+                id="otherfact"
+                placeholder="Name Of Your Faculty"
+              />
+            </div>
             <div class="date hidden" style="display: none">
               <h2>Pick Your Interview Date</h2>
-              <input type="date" name="date" id="date" required />
-              <input type="time" name="time" id="time" required />
+              <select name="date" id="date">
+                <option value="" selected disabled hidden>Interview Day</option>
+                <option value="5/11">Saturday 5/11</option>
+                <option value="6/11">Sunday 6/11</option>
+                <option value="7/11">Monday 7/11</option>
+                <option value="8/11">Tuesday 8/11</option>
+              </select>
+              <select name="time" id="time">
+                <option value="" selected disabled hidden>
+                  Interview Time
+                </option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+              </select>
             </div>
           </form>
-          <button class="btn disabled mobile" id="next">Next</button>
+          <button class="btn disabled mobile info" id="next">Next</button>
         </div>
       </main>
     </div>

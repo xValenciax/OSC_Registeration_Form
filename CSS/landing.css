@@ -4,14 +4,9 @@
     position: absolute;
     padding: 20px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-.landing__header .left {
-    display: flex;
-    gap: 50px;
-    align-items: center;
+    gap: 40px;
 }
 
 /* Header */
@@ -61,8 +56,8 @@
     margin-bottom: 1rem;
     color: #00C9FF;
     font-size: 2rem;
-    animation: move__right 1.5s ease-out 1 forwards;
-    -webkit-animation: move__right 1.5s ease-out 1 forwards;
+    animation: move__right 1s ease-out 1 forwards;
+    -webkit-animation: move__right 1s ease-out 1 forwards;
     transform: skewX(-30deg);
     -webkit-transform: skewX(-30deg);
     -moz-transform: skewX(-30deg);
@@ -80,8 +75,8 @@
     right: -300%;
     color: #ED7806;
     font-size: 4rem;
-    animation: move__left 1.5s 1.5s ease-out 1 forwards;
-    -webkit-animation: move__left 1.5s 1.5s ease-out 1 forwards;
+    animation: move__left 1s 0.8s ease-out 1 forwards;
+    -webkit-animation: move__left 1s 0.8s ease-out 1 forwards;
     transform: skewX(30deg);
     -webkit-transform: skewX(30deg);
     -moz-transform: skewX(30deg);
@@ -100,8 +95,8 @@
     margin-top: 1rem;
     color: #74CE4E;
     font-size: 5rem;
-    animation: move__right 1.5s 3s ease-out 1 forwards;
-    -webkit-animation: move__right 1.5s 3s ease-out 1 forwards;
+    animation: move__right 1s 1.6s ease-out 1 forwards;
+    -webkit-animation: move__right 1s 1.6s ease-out 1 forwards;
     transform: skewX(-30deg);
     -webkit-transform: skewX(-30deg);
     -moz-transform: skewX(-30deg);
