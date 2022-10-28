@@ -61,6 +61,13 @@ const time = document.querySelector(".Time");
 const date = document.querySelector(".date");
 // card info
 
+const CheckName = (username) => {
+  for (const char of username) {
+    if (!isNaN(char)) return false;
+  }
+  return username.length <= 15 && username.length >= 2;
+};
+
 const CheckID = (ID) => {
   for (const dig of ID) if (!typeof Number(dig) === "number") return false;
   return ID.length === 11 && ID[0] === "2" && ID[1] === "0";
@@ -94,8 +101,10 @@ FormInputs.forEach((ele) => {
         lastName.innerHTML = "";
         firstName.innerHTML = e.target.value;
       }
+
       if (e.target.id === "last__name") lastName.innerHTML = e.target.value;
-      if (e.target.value.length <= 15 && e.target.value.length >= 2) {
+
+      if (CheckName(e.target.value)) {
         e.target.style.borderColor = "green";
         e.target.classList.add("valid");
       } else {
