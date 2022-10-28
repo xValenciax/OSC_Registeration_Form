@@ -25,10 +25,10 @@ if (swipe !== null) {
       register__page.classList.remove(".hidden");
       register__page.classList.add("visible");
       landing_page.style.setProperty("display", "none");
-    }, 1200);
+    }, 1500);
     setTimeout(() => {
       register__page.classList.remove("none");
-    }, 800);
+    }, 1000);
   });
 }
 
