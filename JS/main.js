@@ -62,19 +62,21 @@ const date = document.querySelector(".date");
 // card info
 
 const CheckName = (username) => {
+  username = username.trim();
   for (const char of username) {
-    if (char === " ") continue;
     if (!isNaN(char)) return false;
   }
   return username.length <= 15 && username.length >= 2;
 };
 
 const CheckID = (ID) => {
+  ID = ID.trim();
   for (const dig of ID) if (!typeof Number(dig) === "number") return false;
   return ID.length === 11 && ID[0] === "2" && ID[1] === "0";
 };
 
 const CheckEmail = (email) => {
+  email = email.trim();
   const regex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
   return regex.test(email) && email.length >= 3;
 };
