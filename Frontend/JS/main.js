@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /* Landing Page Part */
 const swipe = document.querySelector(".swipe__up");
 const landing_page = document.querySelector(".landing__page");
@@ -59,6 +61,8 @@ const fact = document.querySelector("#Faculty");
 
 const time = document.querySelector(".Time");
 const date = document.querySelector(".date");
+
+let SecComm = false;
 // card info
 
 const CheckName = (username) => {
@@ -174,8 +178,19 @@ Selects.forEach((ele) => {
         yearName.innerHTML = YearName[ele.value];
       } else if (ele.id === "gender") gender.innerHTML = ele.value;
       else if (ele.id === "program") prog.innerHTML = ele.value;
-      else if (ele.id === "committee") committee.innerHTML = ele.value;
-      else if (ele.id === "university") {
+      else if (ele.id === "committee") {
+        committee.innerHTML = ele.value;
+        Array.from(document.querySelector("#sec__committee").options).forEach(
+          (child) => {
+            if (child.value === ele.value)
+              child.setAttribute("hidden", "hidden");
+          }
+        );
+      } else if (ele.id === "sec__committee") {
+        committee.innerHTML += `/ ${ele.value}`;
+        SecComm = true;
+        console.log("sec com from input ", SecComm);
+      } else if (ele.id === "university") {
         univ.innerHTML = ele.value;
         if (ele.value === "other") {
           const otherUniv = document.querySelector("#otheruniv");
@@ -226,12 +241,23 @@ if (validInfo !== 8) {
 
 //check that all fields have been entered for last form
 let validateDate = setInterval(() => {
-  if (
-    document.querySelector("#time").value !== "" &&
-    document.querySelector("#date").value !== "" &&
-    NextBtn.innerHTML === "Submit"
-  )
-    NextBtn.classList.remove("disabled");
+  if (!SecComm) {
+    if (
+      document.querySelector("#time").value !== "" &&
+      document.querySelector("#date").value !== "" &&
+      NextBtn.innerHTML === "Submit"
+    )
+      NextBtn.classList.remove("disabled");
+  } else {
+    if (
+      document.querySelector("#time").value !== "" &&
+      document.querySelector("#date").value !== "" &&
+      document.querySelector("#sec__date").value !== "" &&
+      document.querySelector("#sec__time").value !== "" &&
+      NextBtn.innerHTML === "Submit"
+    )
+      NextBtn.classList.remove("disabled");
+  }
   if (whichForm == 3) clearInterval(validateDate);
 }, 1000);
 
@@ -279,15 +305,34 @@ NextBtn.addEventListener("click", (e) => {
         }, 500);
       }, 1000);
       setTimeout(() => {
-        if (NextBtn.classList.contains("submit"))
+        if (NextBtn.classList.contains("submit")) {
           dateForm.style.display = "flex";
-        else if (NextBtn.classList.contains("extra"))
+          if (SecComm) {
+            console.log("sec com from display ", SecComm);
+            const noneDates = Array.from(
+              document.querySelectorAll("select.none")
+            );
+
+            noneDates.forEach((date) => {
+              date.classList.remove("none");
+            });
+          }
+        } else if (NextBtn.classList.contains("extra"))
           moreInfoForm.style.display = "flex";
       }, 1000);
       setTimeout(() => {
         if (NextBtn.classList.contains("submit")) {
           dateForm.classList.remove("hidden");
           dateForm.classList.add("visible");
+          if (SecComm) {
+            const hidddenDates = Array.from(
+              document.querySelectorAll("select.hidden")
+            );
+            hidddenDates.forEach((hidden) => {
+              hidden.classList.remove("hidden");
+              hidden.classList.remove("visible");
+            });
+          }
         } else if (NextBtn.classList.contains("extra")) {
           moreInfoForm.classList.remove("hidden");
           moreInfoForm.classList.add("visible");
