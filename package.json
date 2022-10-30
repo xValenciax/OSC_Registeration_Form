@@ -2,15 +2,14 @@
   "name": "osc-registeration-form",
   "version": "1.0.0",
   "description": "OSC REGISTERATION FORM",
-  "main": "index.js",
+  "main": "./Backend/server.ts",
   "scripts": {
-    "dev": "nodemon --watch ./src/app.ts",
-    "build": "npx tsc",
-    "start": "node ./dist/app.js",
+    "dev": "tsc-watch --esModuleInterop Backend/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
+    "build": "rm -rf ./dist && npx tsc",
+    "start": "node ./dist/server.js",
     "jasmine": "jasmine",
     "test": "npm run build && npm run jasmine",
-    "fix": "npx eslint ./src/**/** --fix",
-    "prettier": "npx prettier ./src/**/** --write"
+    "fix": "npx eslint ./Backend/**/** --fix"
   },
   "repository": {
     "type": "git",
@@ -30,8 +29,11 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "generate-password": "^1.7.0",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.8.0"
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.8.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -39,12 +41,13 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.14",
     "@types/jsonwebtoken": "^8.5.9",
-    "@types/nodemon": "^1.19.2",
+    "@types/node": "^18.11.7",
     "@types/pg": "^8.6.5",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
-    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^5.0.3",
     "typescript": "^4.8.4"
   }
 }

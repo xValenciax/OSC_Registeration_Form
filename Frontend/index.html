@@ -76,9 +76,10 @@
             </div>
             <div class="interview__details">
               <p class="committee">
-                <span class="com__name"></span>
-                <br />
                 COMMITTEE
+                <br>
+                <span class="com__name"></span>
+                <span class="sec_com_name"></span>
               </p>
               <p class="interview__time">
                 Interview time
@@ -130,12 +131,12 @@
               </div>
             </div>
           </div>
-          <form action="#" method="post" id="info" autocomplete="off">
+          <form action="/interviewee_registeration" method="post" id="info" autocomplete="off">
             <div class="info">
               <h2>Enter Your Information</h2>
               <input
                 type="text"
-                name="Stud_first__name"
+                name="stud_first_name"
                 id="first__name"
                 placeholder="First Name"
                 maxlength="15"
@@ -145,7 +146,7 @@
               />
               <input
                 type="text"
-                name="Stud_last__name"
+                name="stud_last_name"
                 id="last__name"
                 placeholder="Last Name"
                 maxlength="15"
@@ -155,7 +156,7 @@
               />
               <input
                 type="text"
-                name="Stud_ID"
+                name="stud_id"
                 id="id"
                 placeholder="ID"
                 minlength="11"
@@ -165,26 +166,26 @@
               />
               <input
                 type="text"
-                name="Stud_Email"
+                name="stud_email"
                 id="email"
                 placeholder="Email"
                 minlength="3"
                 required
                 spellcheck="false"
               />
-              <select name="Stud__level" id="level">
+              <select name="stud_college_year" id="level">
                 <option value="" selected disabled hidden>Level</option>
                 <option value="First Year">1st Year</option>
                 <option value="Second Year">2nd Year</option>
                 <option value="Third Year">3rd Year</option>
                 <option value="Fourth Year">4th Year</option>
               </select>
-              <select name="Stud__gender" id="gender">
+              <select name="stud_gender" id="gender">
                 <option value="" selected disabled hidden>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
-              <select name="Stud__program" id="program">
+              <select name="stud_program" id="program">
                 <option value="" selected disabled hidden>Program</option>
                 <option value="Mainstream">Mainstream</option>
                 <option value="BioInformatics">Bio</option>
@@ -193,7 +194,7 @@
                 <option value="Software Engineering">SE</option>
                 <option value="Multimedia">Multimedia</option>
               </select>
-              <select name="Wanted__committee" id="committee">
+              <select name="committee" id="committee">
                 <option value="" selected disabled hidden>Committee</option>
                 <option value="Web">Web</option>
                 <option value="Game">Game</option>
@@ -206,7 +207,7 @@
                 <option value="HR">HR</option>
                 <option value="PR">PR</option>
               </select>
-              <select name="sec__Wanted__committee" id="sec__committee">
+              <select name="sec_committee" id="sec__committee">
                 <option value="" selected disabled hidden>2nd Comm (Optional)</option>
                 <option value="Web">Web</option>
                 <option value="Game">Game</option>
@@ -224,27 +225,27 @@
               <h2>More Needed Information</h2>
               <input
                 type="tel"
-                name="phone_number"
+                name="stud_phone_no"
                 id="phone__number"
                 placeholder="Mobile Number"
                 pattern="^01[0-2,5]{1}[0-9]{8}$"
                 required
               />
-              <select name="university" id="university">
+              <select name="stud_university" id="university">
                 <option value="" selected disabled hidden>University</option>
                 <option value="Ain Shams University">ASU</option>
-                <option value="other">other</option>
+                <option value="Other">other</option>
               </select>
-              <select name="Faculty" id="Faculty">
+              <select name="stud_college" id="Faculty">
                 <option value="" selected disabled hidden>Faculty</option>
                 <option value="FCIS">Computer And Information Sciences</option>
-                <option value="other">other</option>
+                <option value="Other">other</option>
               </select>
               <input
                 class="hidden"
                 style="display: none"
                 type="text"
-                name="otherUniv"
+                name="stud_university_other"
                 id="otheruniv"
                 placeholder="Name Of Your University"
               />
@@ -253,21 +254,31 @@
                 class="hidden"
                 style="display: none"
                 type="text"
-                name="otherFact"
+                name="stud_college_other"
                 id="otherfact"
                 placeholder="Name Of Your Faculty"
               />
             </div>
+            <div class="tech_questions hidden none">
+              <textarea name="question1" id="q1" cols="30" rows="5" class="hidden none"></textarea>
+              <textarea name="question2" id="q2" cols="30" rows="5" class="hidden none"></textarea>
+              <textarea name="question3" id="q3" cols="30" rows="5" class="hidden none"></textarea>
+            </div>
+            <div class="sec_tech_questions hidden none">
+              <textarea name="question4" id="q4" cols="30" rows="5" class="hidden nonث"></textarea>
+              <textarea name="question5" id="q5" cols="30" rows="5" class="hidden none"></textarea>
+              <textarea name="question6" id="q6" cols="30" rows="5" class="hidden none"></textarea>
+            </div>
             <div class="date hidden" style="display: none">
               <h2>Pick Your Interview Date</h2>
-              <select name="date" id="date">
+              <select name="interview_day" id="date">
                 <option value="" selected disabled hidden>Interview Day</option>
                 <option value="5/11">Saturday 5/11</option>
                 <option value="6/11">Sunday 6/11</option>
                 <option value="7/11">Monday 7/11</option>
                 <option value="8/11">Tuesday 8/11</option>
               </select>
-              <select name="time" id="time">
+              <select name="interview_date" id="time">
                 <option value="" selected disabled hidden>
                   Interview Time
                 </option>
@@ -281,14 +292,14 @@
                 <option value="4:00 PM">4:00 PM</option>
                 <option value="5:00 PM">5:00 PM</option>
               </select>
-              <select name="sec__date" id="sec__date" class="none hidden">
+              <select name="sec_interview_day" id="sec__date" class="none hidden">
                 <option value="" selected disabled hidden>2nd Interview Day</option>
                 <option value="5/11">Saturday 5/11</option>
                 <option value="6/11">Sunday 6/11</option>
                 <option value="7/11">Monday 7/11</option>
                 <option value="8/11">Tuesday 8/11</option>
               </select>
-              <select name="sec__time" id="sec__time" class="none hidden">
+              <select name="sec_interview_date" id="sec__time" class="none hidden">
                 <option value="" selected disabled hidden>
                   2nd Interview Time
                 </option>

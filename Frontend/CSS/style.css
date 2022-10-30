@@ -254,7 +254,8 @@ form .date {
 }
 
 input,
-select {
+select,
+textarea {
     outline: none;
     border: none;
     position: relative;
@@ -271,6 +272,11 @@ select {
     -ms-transition: 0.3s linear;
     -o-transition: 0.3s linear;
     font-weight: 700;
+}
+
+textarea {
+    border: 1px solid white;
+    resize: none;
 }
 
 select>option:not(:first-child) {

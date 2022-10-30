@@ -1,5 +1,31 @@
 /* eslint-disable */
 
+const Questions = {
+  "Science&Tech": [
+    "Github Link",
+    "Can Java classes suffer from the diamond problem in inheritance ?",
+    "What does the single responsibility principle mean? (optional)",
+  ],
+  Flutter: ["What are widgets?"],
+  Web: [
+    `Explain What this code is supposed to do
+    <br>
+      <code>
+        div>p{
+          border: 1px solid red;
+          font-size: 24px;
+          color: lightgreen;
+        }
+      </code>`,
+  ],
+  Blender: [
+    "What is the shortcut to scale objects in blender?",
+    "What is the shortcut to start edit mode in blender?",
+    "What is the shortcut to enter a new object in blender?",
+  ],
+  "UX&Design": ["What is UX research?(optional)"],
+};
+
 /* Landing Page Part */
 const swipe = document.querySelector(".swipe__up");
 const landing_page = document.querySelector(".landing__page");
@@ -41,8 +67,15 @@ const NextBtn = document.querySelector("#next");
 const FormInputs = Array.from(document.querySelectorAll("#info input"));
 const Selects = Array.from(document.querySelectorAll("select"));
 
+const infoForm = document.querySelector("form .info");
+const moreInfoForm = document.querySelector("form .more__info");
+const dateForm = document.querySelector("form .date");
+const techForm = document.querySelector("form .tech_questions");
+const sec_techForm = document.querySelector("form .sec_tech_questions");
+
 // card info
 const committee = document.querySelector(".com__name");
+const sec_committee = document.querySelector(".sec_com_name");
 const ID = document.querySelector(".ID");
 const firstName = document.querySelector(".first");
 const lastName = document.querySelector(".last");
@@ -65,6 +98,15 @@ const date = document.querySelector(".date");
 let SecComm = false;
 // card info
 
+const addQuestion = (comm) => {
+  return (
+    comm === "Science&Tech" ||
+    comm === "Web" ||
+    comm === "Blender" ||
+    comm === "UX&Design" ||
+    comm === "Flutter"
+  );
+};
 const CheckName = (username) => {
   username = username.trim();
   for (const char of username) {
@@ -179,6 +221,7 @@ Selects.forEach((ele) => {
       } else if (ele.id === "gender") gender.innerHTML = ele.value;
       else if (ele.id === "program") prog.innerHTML = ele.value;
       else if (ele.id === "committee") {
+        addQuestion(ele.value);
         committee.innerHTML = ele.value;
         Array.from(document.querySelector("#sec__committee").options).forEach(
           (child) => {
@@ -187,12 +230,13 @@ Selects.forEach((ele) => {
           }
         );
       } else if (ele.id === "sec__committee") {
-        committee.innerHTML += `/ ${ele.value}`;
+        addQuestion(ele.value, 1);
+        sec_committee.innerHTML = ele.value;
         SecComm = true;
         console.log("sec com from input ", SecComm);
       } else if (ele.id === "university") {
         univ.innerHTML = ele.value;
-        if (ele.value === "other") {
+        if (ele.value === "Other") {
           const otherUniv = document.querySelector("#otheruniv");
           setTimeout(() => {
             otherUniv.style.setProperty("display", "block");
@@ -200,19 +244,19 @@ Selects.forEach((ele) => {
           setTimeout(() => {
             otherUniv.classList.remove("hidden");
             otherUniv.classList.add("visible");
-          }, 500);
+          }, 400);
         }
       } else if (ele.id === "Faculty") {
         faculty.innerHTML = ele.value;
-        if (ele.value === "other") {
+        if (ele.value === "Other") {
           const otherFact = document.querySelector("#otherfact");
           setTimeout(() => {
             otherFact.style.setProperty("display", "block");
-          }, 800);
+          }, 200);
           setTimeout(() => {
             otherFact.classList.remove("hidden");
             otherFact.classList.add("visible");
-          }, 1000);
+          }, 400);
         }
       } else if (ele.id === "date") date.innerHTML = ele.value;
       else if (ele.id === "time") time.innerHTML = ele.value;
@@ -275,31 +319,48 @@ let validateExtra = setInterval(() => {
 /* Date and Time Picker */
 
 /* switch between forms */
-const infoForm = document.querySelector("form .info");
-const moreInfoForm = document.querySelector("form .more__info");
-const dateForm = document.querySelector("form .date");
 
 NextBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.innerHTML === "Next") {
     if (!NextBtn.classList.contains("disabled")) {
       if (NextBtn.classList.contains("info")) {
-        infoForm.style.setProperty("transform", "translateX(-300%)");
+        infoForm.style.setProperty("transform", "translateX(-1000%)");
         NextBtn.classList.remove("info");
         NextBtn.classList.add("extra");
       } else if (NextBtn.classList.contains("extra")) {
-        moreInfoForm.style.setProperty("transform", "translateX(-300%)");
+        moreInfoForm.style.setProperty("transform", "translateX(-1000%)");
         NextBtn.classList.remove("extra");
+
+        if (addQuestion(committee.innerHTML)) NextBtn.classList.add("tech");
+        else NextBtn.classList.add("submit");
+      } else if (NextBtn.classList.contains("tech")) {
+        techForm.style.setProperty("transform", "translateX(-1000%)");
+        NextBtn.classList.remove("tech");
+
+        if (SecComm && addQuestion(sec_committee.innerHTML))
+          NextBtn.classList.add("sec_tech");
+        else NextBtn.classList.add("submit");
+      } else if (NextBtn.classList.contains("sec_tech")) {
+        sec_committee.style.setProperty("transform", "translateX(-1000%)");
+
+        NextBtn.classList.remove("sec_tech");
         NextBtn.classList.add("submit");
       }
       setTimeout(() => {
         if (NextBtn.classList.contains("extra"))
           infoForm.style.display = "none";
+        else if (NextBtn.classList.contains("tech"))
+          techForm.classList.remove("none");
+        else if (NextBtn.classList.contains("sec_tech"))
+          sec_techForm.classList.remove("none");
         else if (NextBtn.classList.contains("submit"))
           moreInfoForm.style.display = "none";
+
         NextBtn.style.opacity = "0";
         setTimeout(() => {
-          if (whichForm == 2) NextBtn.innerHTML = "Submit";
+          if (NextBtn.classList.contains("submit"))
+            NextBtn.innerHTML = "Submit";
           NextBtn.classList.add("disabled");
           NextBtn.style.opacity = "100%";
         }, 500);
@@ -312,13 +373,16 @@ NextBtn.addEventListener("click", (e) => {
             const noneDates = Array.from(
               document.querySelectorAll("select.none")
             );
-
             noneDates.forEach((date) => {
               date.classList.remove("none");
             });
           }
         } else if (NextBtn.classList.contains("extra"))
           moreInfoForm.style.display = "flex";
+        else if (NextBtn.classList.contains("tech"))
+          techForm.classList.display = "flex";
+        else if (NextBtn.classList.contains("sec_tech"))
+          sec_techForm.classList.display = "flex";
       }, 1000);
       setTimeout(() => {
         if (NextBtn.classList.contains("submit")) {
@@ -336,6 +400,12 @@ NextBtn.addEventListener("click", (e) => {
         } else if (NextBtn.classList.contains("extra")) {
           moreInfoForm.classList.remove("hidden");
           moreInfoForm.classList.add("visible");
+        } else if (NextBtn.classList.contains("tech")) {
+          techForm.classList.remove("hidden");
+          techForm.classList.add("visible");
+        } else if (NextBtn.classList.contains("sec_tech")) {
+          sec_techForm.classList.remove("hidden");
+          sec_techForm.classList.add("visible");
         }
       }, 1300);
     }
@@ -347,6 +417,7 @@ NextBtn.addEventListener("click", (e) => {
         window.location = "public/success.html";
       }, 1500);
     }
+    document.querySelector("#info").submit();
   }
   whichForm++;
 });
