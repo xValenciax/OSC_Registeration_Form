@@ -98,6 +98,47 @@ const date = document.querySelector(".date");
 let SecComm = false;
 // card info
 
+const showTextArea = (comm, sec = false) => {
+  if (Questions[comm] === undefined) return;
+
+  let areaCount = 0;
+  let textareas = [],
+    lbls = [];
+  if (!sec) {
+    textareas = Array.from(
+      document.querySelectorAll(".tech_questions textarea")
+    );
+    lbls = Array.from(document.querySelectorAll(".tech_questions label"));
+  } else {
+    textareas = Array.from(
+      document.querySelectorAll(".sec_tech_questions textarea")
+    );
+
+    lbls = Array.from(document.querySelectorAll(".sec_tech_questions label"));
+  }
+
+  console.log(textareas[0].parentNode);
+  for (let i = 0; i < Questions[comm].length; i++) {
+    setTimeout(() => {
+      textareas[i].classList.remove("none");
+    }, 200);
+
+    setTimeout(() => {
+      textareas[i].classList.remove("hidden");
+      textareas[i].classList.add("visible");
+    }, 400);
+
+    lbls.forEach((lbl) => {
+      if (lbl.getAttribute("for") === textareas[i].id) {
+        lbl.classList.remove("none");
+        lbl.classList.remove("hidden");
+        lbl.classList.add("visible");
+        lbl.innerHTML = Questions[comm][i];
+      }
+    });
+  }
+};
+
 const addQuestion = (comm) => {
   return (
     comm === "Science&Tech" ||
@@ -221,7 +262,7 @@ Selects.forEach((ele) => {
       } else if (ele.id === "gender") gender.innerHTML = ele.value;
       else if (ele.id === "program") prog.innerHTML = ele.value;
       else if (ele.id === "committee") {
-        addQuestion(ele.value);
+        showTextArea(ele.value);
         committee.innerHTML = ele.value;
         Array.from(document.querySelector("#sec__committee").options).forEach(
           (child) => {
@@ -230,7 +271,7 @@ Selects.forEach((ele) => {
           }
         );
       } else if (ele.id === "sec__committee") {
-        addQuestion(ele.value, 1);
+        showTextArea(ele.value, true);
         sec_committee.innerHTML = ele.value;
         SecComm = true;
         console.log("sec com from input ", SecComm);
@@ -302,9 +343,9 @@ let validateDate = setInterval(() => {
     )
       NextBtn.classList.remove("disabled");
   }
-  if (whichForm == 3) clearInterval(validateDate);
 }, 1000);
 
+//check that all fields have been entered for extra form
 let validateExtra = setInterval(() => {
   if (
     number.value !== "" &&
@@ -313,7 +354,48 @@ let validateExtra = setInterval(() => {
     NextBtn.innerHTML === "Next"
   )
     NextBtn.classList.remove("disabled");
-  if (whichForm == 2) clearInterval(validateExtra);
+  if (
+    NextBtn.classList.contains("tech") ||
+    NextBtn.classList.contains("sec_tech") ||
+    NextBtn.classList.contains("submit")
+  )
+    clearInterval(validateExtra);
+}, 1000);
+
+//check that all fields have been entered for questions form
+let validateQuestions = setInterval(() => {
+  if (
+    ((!document.querySelector("#q1").classList.contains("none") &&
+      document.querySelector("#q1").value !== "") ||
+      (!document.querySelector("#q2").classList.contains("none") &&
+        document.querySelector("#q2").value !== "") ||
+      (!document.querySelector("#q3").classList.contains("none") &&
+        document.querySelector("#q3").value !== "")) &&
+    NextBtn.classList.contains("tech")
+  ) {
+    NextBtn.classList.remove("disabled");
+  }
+  if (
+    NextBtn.classList.contains("submit") ||
+    NextBtn.classList.contains("sec_tech")
+  )
+    clearInterval(validateQuestions);
+}, 1000);
+
+//check that all fields have been entered for second questions form
+let validateSecQuestions = setInterval(() => {
+  if (
+    ((!document.querySelector("#q4").classList.contains("none") &&
+      document.querySelector("#q4").value !== "") ||
+      (!document.querySelector("#q5").classList.contains("none") &&
+        document.querySelector("#q5").value !== "") ||
+      (!document.querySelector("#q6").classList.contains("none") &&
+        document.querySelector("#q6").value !== "")) &&
+    NextBtn.classList.contains("sec_tech")
+  ) {
+    NextBtn.classList.remove("disabled");
+  }
+  if (NextBtn.classList.contains("submit")) clearInterval(validateQuestions);
 }, 1000);
 
 /* Date and Time Picker */
@@ -332,13 +414,13 @@ NextBtn.addEventListener("click", (e) => {
         moreInfoForm.style.setProperty("transform", "translateX(-1000%)");
         NextBtn.classList.remove("extra");
 
-        if (addQuestion(committee.innerHTML)) NextBtn.classList.add("tech");
+        if (addQuestion(committee.innerText)) NextBtn.classList.add("tech");
         else NextBtn.classList.add("submit");
       } else if (NextBtn.classList.contains("tech")) {
         techForm.style.setProperty("transform", "translateX(-1000%)");
         NextBtn.classList.remove("tech");
 
-        if (SecComm && addQuestion(sec_committee.innerHTML))
+        if (SecComm && addQuestion(sec_committee.innerText))
           NextBtn.classList.add("sec_tech");
         else NextBtn.classList.add("submit");
       } else if (NextBtn.classList.contains("sec_tech")) {
@@ -351,11 +433,16 @@ NextBtn.addEventListener("click", (e) => {
         if (NextBtn.classList.contains("extra"))
           infoForm.style.display = "none";
         else if (NextBtn.classList.contains("tech"))
-          techForm.classList.remove("none");
-        else if (NextBtn.classList.contains("sec_tech"))
-          sec_techForm.classList.remove("none");
-        else if (NextBtn.classList.contains("submit"))
           moreInfoForm.style.display = "none";
+        else if (NextBtn.classList.contains("sec_tech"))
+          techForm.style.display = "none";
+        else if (NextBtn.classList.contains("submit")) {
+          if (addQuestion(committee.innerText) && !SecComm)
+            techForm.style.display = "none";
+          else if (addQuestion(committee.innerText) && SecComm)
+            sec_techForm.style.display = "none";
+          else moreInfoForm.style.display = "none";
+        }
 
         NextBtn.style.opacity = "0";
         setTimeout(() => {
@@ -379,10 +466,11 @@ NextBtn.addEventListener("click", (e) => {
           }
         } else if (NextBtn.classList.contains("extra"))
           moreInfoForm.style.display = "flex";
-        else if (NextBtn.classList.contains("tech"))
-          techForm.classList.display = "flex";
-        else if (NextBtn.classList.contains("sec_tech"))
-          sec_techForm.classList.display = "flex";
+        else if (NextBtn.classList.contains("tech")) {
+          techForm.classList.remove("none");
+        } else if (NextBtn.classList.contains("sec_tech")) {
+          sec_techForm.classList.remove("none");
+        }
       }, 1000);
       setTimeout(() => {
         if (NextBtn.classList.contains("submit")) {
